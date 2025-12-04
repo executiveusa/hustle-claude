@@ -32,6 +32,21 @@ bin/claude-flow-*
 .env.local
 .env.*.local
 
+# Railway Zero-Secrets Bootstrapper
+master.secrets.json
+.maintenance/
+railway.json
+railway.toml
+nixpacks.toml
+docker-compose.coolify.yml
+Dockerfile.coolify
+.coolify/
+RAILWAY_GUARDRAILS.md
+COOLIFY_SUPPORT.md
+COOLIFY_MIGRATION.md
+HOSTINGER_VPN_NOTES.md
+DEPLOYMENT.md
+
 # Logs
 logs/
 *.log

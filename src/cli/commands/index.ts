@@ -1891,6 +1891,10 @@ Now, please proceed with the task: ${task}`;
   const migrateCmd = createMigrateCommand();
   cli.command(migrateCmd as any);
 
+  // Railway Zero-Secrets Deployment command
+  const deployCmd = createDeployCommand();
+  cli.command(deployCmd as any);
+
   // Swarm UI command (convenience wrapper)
   cli.command({
     name: 'swarm-ui',
