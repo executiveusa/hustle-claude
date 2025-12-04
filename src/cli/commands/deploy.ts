@@ -121,7 +121,8 @@ Examples:
           if (options.showValues) {
             console.log(`  ${chalk.cyan(key)}: ${value}`);
           } else {
-            const masked = value.replace(/./g, '*');
+            // Use consistent masking length to avoid leaking secret length
+            const masked = '*'.repeat(Math.min(value.length, 12));
             console.log(`  ${chalk.cyan(key)}: ${masked}`);
           }
         }

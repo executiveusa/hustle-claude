@@ -55,9 +55,13 @@ export class MasterSecretsManager {
 
     await fs.writeJson(this.masterFilePath, initialData, { spaces: 2 });
 
-    // Ensure file is not readable by others (Unix-like systems)
+    // Ensure file is not readable by others
     if (process.platform !== 'win32') {
       await fs.chmod(this.masterFilePath, 0o600);
+    } else {
+      // On Windows, warn about potential security risk
+      console.warn('⚠️  Warning: On Windows, file permissions may not be properly restricted.');
+      console.warn('   Please ensure master.secrets.json is in a secure location.');
     }
   }
 

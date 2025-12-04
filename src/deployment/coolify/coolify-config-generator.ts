@@ -691,11 +691,14 @@ CMD ["npm", "start"]
    * Write Hostinger VPN setup notes
    */
   private async writeHostingerVPNNotes(outputDir: string): Promise<void> {
+    // Sanitize project name to prevent template injection
+    const safeProjectName = this.projectName.replace(/[`${}]/g, '');
+    
     const notes = `# Hostinger VPN Configuration Notes
 
 ## Overview
 
-These notes provide guidance for deploying ${this.projectName} on a Hostinger VPS with VPN access.
+These notes provide guidance for deploying ${safeProjectName} on a Hostinger VPS with VPN access.
 
 ## VPN Benefits
 

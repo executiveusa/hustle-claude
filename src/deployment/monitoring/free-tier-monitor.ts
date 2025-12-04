@@ -198,17 +198,29 @@ export class FreeTierMonitor {
 
   /**
    * Fetch actual usage from Railway API (stub for future implementation)
+   * 
+   * @remarks
+   * This method is currently not implemented and will return null.
+   * Railway does not provide a public API for programmatic usage queries.
+   * Use simulateUsageCheck() for testing or manual checks via Railway dashboard.
+   * 
+   * Future implementation would require:
+   * - Railway GraphQL API token
+   * - Project/service ID
+   * - Usage metrics parsing from Railway's private API
+   * 
+   * @param projectId - Railway project ID (unused)
+   * @param token - Railway API token (unused)
+   * @returns null (not implemented)
    */
   async fetchRailwayUsage(projectId?: string, token?: string): Promise<UsageData | null> {
-    // TODO: Implement actual Railway API integration
-    // This would require Railway API token and project ID
-    // For now, return null to indicate simulation should be used
+    // Railway API integration not available
+    // Use Railway dashboard for actual usage: https://railway.app/account/usage
     
     if (!projectId || !token) {
       return null;
     }
 
-    // Placeholder for future API implementation
     console.log('Railway API integration not yet implemented. Use simulateUsageCheck() instead.');
     return null;
   }

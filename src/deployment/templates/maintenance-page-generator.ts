@@ -248,14 +248,19 @@ export class MaintenancePageGenerator {
    * Generate simple Express server for maintenance page
    */
   static generateMaintenanceServer(options: MaintenancePageOptions): string {
+    // Generate HTML to external file to avoid template injection issues
     return `// Maintenance Mode Server
 // Generated automatically by Railway Zero-Secrets Bootstrapper
 
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const maintenanceHTML = \`${this.generate(options).replace(/`/g, '\\`')}\`;
+// Read HTML from file to avoid template injection
+const maintenanceHTML = fs.readFileSync(path.join(__dirname, 'maintenance.html'), 'utf-8');
 
 app.get('*', (req, res) => {
   res.status(503).send(maintenanceHTML);
